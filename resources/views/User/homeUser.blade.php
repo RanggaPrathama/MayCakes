@@ -48,10 +48,11 @@
                 <b>This Week’s Special</b>
             </div>
             <div class="row row3">
-                <div class="col-3 image" style="background-image: url('images/home2.svg');"></div>
-                <div class="col-3 image" style="background-image: url('images/home3.svg');"></div>
-                <div class="col-3 image" style="background-image: url('images/home4.svg');"></div>
-                <div class="col-3 image" style="background-image: url('images/home5.svg');"></div>
+                @foreach ($cakes as $cake )
+                <div class="col-3 image" style="background-image: url('{{route('cake.image',$cake->id_cake)}}');"></div>
+                @endforeach
+
+
             </div>
         </div>
     </section>
