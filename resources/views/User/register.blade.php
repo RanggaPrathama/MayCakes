@@ -15,14 +15,14 @@
 </head>
 
 <body class="login">
-    <nav>
+    {{-- <nav>
         <p class="logo">May' Cakes</p>
         <div class="menu">
             <a href=""><img src="images/icon-shopping-cart.svg" alt=""></a>
             <a href=""><img src="images/profileIcon.svg" alt=""></a>
             <a href=""><img src="images/log-in.svg" alt=""></a>
         </div>
-    </nav>
+    </nav> --}}
     <section class="container container-login">
         <div class="image-label"></div>
         <p class="title">Form Register</p>

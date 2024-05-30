@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('cakes', function (Blueprint $table) {
-            $table->id('id_cake')->autoIncrement();
+            $table->id('id_cake');
+            $table->unsignedBigInteger('id_kategori');
             $table->string('nama_cake');
             $table->string('deskripsi_cake');
             $table->bigInteger('harga_cake');
             $table->string('gambar_cake');
             $table->tinyInteger('status')->default(1);
+            $table->foreign('id_kategori')->references('id_kategori')->on('kategoris')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->timestamps();
         });
     }

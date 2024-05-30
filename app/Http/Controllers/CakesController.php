@@ -42,7 +42,8 @@ class CakesController extends Controller
      */
     public function create()
     {
-        return view('admin.cakes.create');
+        $kategoris = DB::table('kategoris')->get();
+        return view('admin.cakes.create',['kategoris' => $kategoris]);
     }
 
     /**
@@ -51,26 +52,30 @@ class CakesController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_cake' => 'required',
-            'deskripsi_cake' => 'required',
-            'harga_cake' => 'required',
-            'gambar_cake' => 'required|mimes:png,jpg',
-            'harga_cake' =>'required',
-            'created_at'=> now()
-        ],
-    );
+            'id_payment' => 'required',
+            'id_pemesanan' => 'required',
+            'buktiBayar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // memastikan file adalah gambar
+        ]);
 
-        if($request->hasFile('gambar_cake')){
-            $gambar = $request->file('gambar_cake')->getClientOriginalName();
-            $path=$request->file('gambar_cake')->store('private/cakes');
-            $validatedData["gambar_cake"] = $path;
+        if($request->hasFile('buktiBayar')){
+            $gambar = $request->file('buktiBayar')->getClientOriginalName();
+            // Menyimpan file ke disk private
+            $path = $request->file('buktiBayar')->store('buktiBayarr', 'private');
+            $validatedData['buktiBayar'] = $path;
         }
 
-        $tesCake = DB::table('cakes')->insert($validatedData);
-        if($tesCake){
-            return redirect()->route('cake.index')->with('success','Data Cake Successfully Added');
+        $pembayaran = DB::table('pembayarans')->insert([
+            'id_payment' => $validatedData['id_payment'],
+            'id_pemesanan' => $validatedData['id_pemesanan'],
+            'buktiBayar' => $validatedData['buktiBayar'],
+            'status' => 1,
+            'created_at' => now()
+        ]);
+
+        if($pembayaran){
+            return redirect()->route('homeUser')->with('success', 'Pembayaran Added Success');
         }else{
-            return redirect()->route('cake.index')->with('error','Data Cake Failed Added');
+            return redirect()->back()->with('error', 'Pembayaran Added Failed');
         }
     }
 
@@ -88,7 +93,8 @@ class CakesController extends Controller
     public function edit($id)
     {
         $cakes = DB::table('cakes')->where('id_cake','=',$id)->first();
-        return view('admin.cakes.update',['cakes'=> $cakes]);
+        $kategoris = DB::table('kategoris')->get();
+        return view('admin.cakes.update',['cakes'=> $cakes,'kategoris'=>$kategoris]);
     }
 
     /**
@@ -98,9 +104,10 @@ class CakesController extends Controller
     {
         $validatedData = $request->validate([
             'nama_cake' =>'required',
+            'id_kategori'=>'required',
             'deskripsi_cake' =>'required',
             'harga_cake' =>'required',
-            'gambar_cake' =>'required|mimes:png,jpg',
+            'gambar_cake' =>'required|mimes:png,jpg,svg',
             'harga_cake' =>'required',
             'updated_at' =>now()
         ]);

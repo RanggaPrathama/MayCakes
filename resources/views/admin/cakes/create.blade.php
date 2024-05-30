@@ -59,6 +59,13 @@
                         </div>
                       @enderror
                       <br>
+                      <label for="">Kategori</label>
+                      <select name="id_kategori" id="" class="form-select">
+                         @foreach ( $kategoris as $kategori )
+                         <option  value="{{ $kategori->id_kategori }}">{{ $kategori->nama_kategori }}</option>
+                           @endforeach
+                      </select>
+                      <br>
                       <label for="">Deskripsi Cake</label>
                       <textarea type="text" name="deskripsi_cake" class="form-control @error('deskripsi_cake')
                           is-invalid
@@ -69,7 +76,7 @@
                         </div>
                       @enderror
                       <br>
-                      <label for="">Harge Cake</label>
+                      <label for="">Harga Cake</label>
                       <input type="number" name="harga_cake" class="form-control @error('harga_cake')
                         is-invalid
                       @enderror" >

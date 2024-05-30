@@ -162,38 +162,36 @@
     justify-content: center;
 }
 
-.catalog .container-content{
 
-}
 
-.catalog{
+/* {
     background-color: #E2D7CA;
-}
-.catalog nav{
+} */
+ nav{
     /* height: 135px; */
     padding: 1vw 2vw;
     background-color: rgba(155, 149, 149, 0.55);
     display: flex;
     justify-content: space-between;
 }
-.catalog nav .logo{
+ nav .logo{
     font-weight: 700;
     font-size: 30px;
     margin: 0;
     padding: 0;
 }
-.catalog nav .menu img{
+ nav .menu img{
     width: 24px;
     margin: 0.5vw;
 }
 
-.catalog .container-content{
+ .container-content{
     margin-top: 7vw;
     background-color: rgba(255, 255, 255, 0.5);
     padding: 1.5vw 5vw;
     border-radius: 30px;
 }
-.catalog .container-content .brownies{
+ .container-content .brownies{
     background-color: #d9d9d979;
     font-size: 20px;
     font-weight: 500;
@@ -202,19 +200,19 @@
     border-radius: 20px;
     color: black;
 }
-.catalog .container-content .brownies p{
+ .container-content .brownies p{
     margin: 0;
 }
-.catalog .container-content .box-content{
+ .container-content .box-content{
     margin: 2vw 0;
 }
-.catalog .container-content .box-content .content{
+ .container-content .box-content .content{
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
 }
-.catalog .container-content .box-content .content .image{
+ .container-content .box-content .content .image{
     width: 20vw;
     height: 20vw;
     /* background-color: black; */
@@ -222,14 +220,14 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
-.catalog .container-content .box-content .content p{
+ .container-content .box-content .content p{
         margin: 0;
 }
-.catalog .container-content .box-content .content .price{
+ .container-content .box-content .content .price{
     font-size: 25px;
     text-align: center;
 }
-.catalog .container-content .cakes{
+ .container-content .cakes{
     background-color: #d9d9d979;
     font-size: 20px;
     font-weight: 500;
@@ -238,36 +236,36 @@
     border-radius: 20px;
     color: black;
 }
-.catalog .container-content .cakes p{
+ .container-content .cakes p{
     margin: 0;
 }
-.catalog .container-content .box-content .content .title{
+ .container-content .box-content .content .title{
     font-weight: 700;
 }
 /* background-image: url('images/home1.svg'); */
 
-.product{
+/* {
     background-color: #E2D7CA;
-}
-.product nav{
+} */
+ nav{
     /* height: 135px; */
     padding: 1vw 2vw;
     background-color: rgba(155, 149, 149, 0.55);
     display: flex;
     justify-content: space-between;
 }
-.product nav .logo{
+ nav .logo{
     font-weight: 700;
     font-size: 30px;
     margin: 0;
     padding: 0;
 }
-.product nav .menu img{
+ nav .menu img{
     width: 24px;
     margin: 0.5vw;
 }
 
-.product .container-content{
+ .container-content{
     margin-top: 4vw;
     background-color: rgba(255, 255, 255, 0.5);
     padding: 1.5vw 5vw;
@@ -275,43 +273,43 @@
     width: 100vw;
 }
 
-.product .container-content .image{
+ .container-content .image{
     width: 25vw;
     height: 25vw;
     /* background-color: black; */
-    background-image: url('images/home1.svg');
+    /* background-image: url('images/home1.svg'); */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.product .container-content .title{
+ .container-content .title{
     font-size: 25px;
     text-align: center;
     font-weight: 600;
 }
-.product .container-content .name{
+ .container-content .name{
     font-size: 25px;
     text-align: start;
     font-weight: 600;
 }
-.product .container-content .price{
+ .container-content .price{
     font-size: 25px;
     text-align: start;
     font-weight: 600;
 }
-.product .container-content input{
+ .container-content input{
     width: 10vw;
 }
-.product .container-content .form{
+ .container-content .form{
     gap: 1vw;
 }
-.product .container-content .btn-add{
+ .container-content .btn-add{
     background-color: #D9D9D9;
     padding: 0.3vw 2vw;
     color: black;
 }
-.product .container-content .btn-buy{
+ .container-content .btn-buy{
     background-color: #6e57507c;
     padding: 0.3vw 2vw;
     color: white;
