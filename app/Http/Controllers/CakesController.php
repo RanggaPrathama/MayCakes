@@ -52,30 +52,28 @@ class CakesController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'id_payment' => 'required',
-            'id_pemesanan' => 'required',
-            'buktiBayar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // memastikan file adalah gambar
+            'nama_cake' =>'required',
+            'id_kategori'=>'required',
+            'deskripsi_cake' =>'required',
+            'harga_cake' =>'required',
+            'gambar_cake' =>'required|mimes:png,jpg,svg',
+            'harga_cake' =>'required',
+            'updated_at' =>now()
         ]);
 
-        if($request->hasFile('buktiBayar')){
-            $gambar = $request->file('buktiBayar')->getClientOriginalName();
+        if($request->hasFile('gambar_cake')){
+            $gambar = $request->file('gambar_cake')->getClientOriginalName();
             // Menyimpan file ke disk private
-            $path = $request->file('buktiBayar')->store('buktiBayarr', 'private');
-            $validatedData['buktiBayar'] = $path;
+            $path = $request->file('gambar_cake')->store('private/cakes');
+            $validatedData['gambar_cake'] = $path;
         }
 
-        $pembayaran = DB::table('pembayarans')->insert([
-            'id_payment' => $validatedData['id_payment'],
-            'id_pemesanan' => $validatedData['id_pemesanan'],
-            'buktiBayar' => $validatedData['buktiBayar'],
-            'status' => 1,
-            'created_at' => now()
-        ]);
+       $cakes = DB::table('cakes')->insert($validatedData);
 
-        if($pembayaran){
-            return redirect()->route('homeUser')->with('success', 'Pembayaran Added Success');
+        if($cakes){
+            return redirect()->route('cake.index')->with('success', 'Cake Added Success');
         }else{
-            return redirect()->back()->with('error', 'Pembayaran Added Failed');
+            return redirect()->back()->with('error', 'Cake Added Failed');
         }
     }
 
